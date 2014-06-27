@@ -176,8 +176,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Static asset configuration
 import os
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/polls/static/'
+STATIC_ROOT = ''
+STATIC_URL = '/static/polls/'
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, 'static'),
