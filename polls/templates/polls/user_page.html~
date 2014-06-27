@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>{{head_title}}</title>
+	</head>
+<body>
+	<h1>{{page_title}}</h1>
+	{% if user.username %}
+		<p>Welcome {{user.username}}    <a href="/polls/logout">Logout </a></p>
+	{% else %}
+		<p> Welome anonymous user you need to login <a href="/polls/login">Login </a> </p>
+	{% endif %}
+
+</body>
+</html>
+

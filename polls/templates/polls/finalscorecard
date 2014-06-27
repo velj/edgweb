@@ -1,0 +1,261 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+  <head>
+    <html lang="en">
+        <meta charset="utf-8">
+    <title>{{head_title}}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+ <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">    
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Vollkorn:300italic,400italic,600italic,700italic,300,400,600,700,800" 
+          rel="stylesheet" type="text/css">
+
+    <link href= {% static "polls/css/bootstrap.css" %}  rel="stylesheet">
+    <link href= {% static "polls/css/custom.css" %}  rel="stylesheet" >
+    <script src={% static "polls/js/bootstrap.min.js" %} ></script>
+<style type="text/css">
+  /* All form factors */
+          /* Main body and headings */
+
+
+                 
+          body{
+            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+          }
+          .heading, .subheading {
+            font-family: 'Vollkorn', Helvetica, Arial, sans-serif;
+            text-align: center;
+          }
+          p.lead {
+            padding-top: 1.5%;
+            font-size: 24px;
+            line-height: 30px;
+          }
+          p {
+            font-size: 15px;
+            line-height: 24px;
+          }
+
+          /* Video pitch and Action */
+          .pitch {
+            padding: 2.5% 0%;
+          }
+          .order {
+            padding: 2% 0%;
+          }
+          .actions {
+            background-color: #343434;
+            padding: 3% 0%;
+          }
+          .video, .thermometer, .order, .social, .statistics {
+            text-align: center;
+          }
+          .statistics h3, .statistics p {
+            color: white;
+          }
+
+          /* Marketing Copy and Footer */
+          .copy {
+            padding-top: 2.5%;
+            padding-bottom: 2.5%;
+            text-align: justify;
+          }
+          .asset {
+            padding: 2.5% 0%;
+          }
+          .footer {
+            color: #cccccc;
+            text-align: center;
+          }
+          .footer p {
+            font-size: 11px;
+          }
+          .footer a {
+            color: #ccccff;
+          }
+
+     body {
+             padding-top: 60px;
+            }
+           .linediv-l {
+             border-right: 1px white solid;
+            }
+           .linediv-r {
+             border-left: 1px white solid;x
+           } 
+        }
+
+ 
+
+
+</style>
+</head>
+
+<body> 
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="navbar-toggle"
+                  data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"> eDG WEB</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">tweet eric is the bomb</a></li>
+              <li><a href="#about">view scorecard</a></li>
+              <li><a href="#contact">logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+<!--
+	<h1>{{page_title}}</h1>
+ -->
+
+	{% if user.is_authenticated %}
+<div class="container">
+		<p>This can be removed and only used for troubleshooting {{user.username}}    {{content}} {{courseid}}  - {{players}} <a href="/polls/logout">Logout </a></p>
+	    
+         <!-- if gamestarted  = " true"   in increment the next hole  and diplay the scoring form-->
+   
+
+        <h1>Hole: {{currentHole}} of {{totalholesinround}}</h1>
+  
+<form action="../game/" method="post">
+                
+                   <table class="table table-striped">
+                        <TH>Name</TH>
+                            <TH>Score</TH>
+                                <TH>Total</TH>
+
+                  {% for player, score in listy %}                                                            
+                      
+        
+
+
+                      <tr>
+                        <div class="col-xs-12">
+                         <td> <label for="n" style="" >{{player}}</label></td>
+                          <td> <input class="col-xs-12 col-xs-offset-6" style="width: 50px; height:30px;border:1px solid blue" name={{player}}
+                             type="tel"
+                             min="0"
+                             max="10"
+                             step="1"
+                             autofocus="autofocus"></td>
+                          <td>  <label>{{score}} </label></td>
+                          </div> 
+                    </div>  
+
+                      </tr>
+
+
+                    {% endfor %}   
+                    </table>                                             
+                          </div>                                              
+                  {% csrf_token%}                                                                                         
+                  <input class="btn btn-primary btn-lg btn-block" type="submit" value="Next Hole" />
+</form>                                                 
+
+
+       
+<table class="table table-striped">
+    <TH>Name</TH>
+{% for i in "xxxxxxxxxxxxxxxxxx" %}
+   <TH>  {{ forloop.counter }} </TH>
+{% endfor %}
+
+    {% for player in scoreslistFULL %}        
+  <tr>
+    <td class="labelcell" style="width:30px; margin-right:5px" >
+      <div  style="width:50px">
+        <label>{{player.playerID}}</label>
+      </div>
+    </td>
+
+<!-- table for the scorecard     ------------------------------------------  -->    
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h1}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h2}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h3}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h4}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h5}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h6}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h7}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h8}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h9}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h10}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h11}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h12}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h13}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h14}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h15}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h16}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h17}}  style="width:30px" /></div></div></td>
+
+<td><div class="control"  style="width:30px"><div class="input" style="width:30px">
+<input type="text" value={{player.h18}}  style="width:30px" /></div></div></td>
+
+<!-- END Scores table for the scorecard     ------------------------------------------  -->    
+
+
+  </tr>
+
+{% endfor %}  
+
+</table><!-- end scorecard table     ------------------------------------------  -->    
+
+
+
+
+</div><!--/.container-->
+	{% else %}
+		<p> Welome please login <a href="/polls/login">Login </a> </p>
+	{% endif %}
+
+</body>
+</html>
