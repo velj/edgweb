@@ -57,7 +57,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+#STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -127,6 +127,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'polls',
     'widget_tweaks',
+    'gunicorn',
+    'storages',
+    'boto',
     'multiforloop',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
@@ -173,11 +176,11 @@ DATABASES = { 'default' : dj_database_url.config(default='postgres://postgres:er
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Static asset configuration
+# Static asset configurationheroku run python manage.py collectstatic
 import os
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = ''
-STATIC_URL = '/static/polls/'
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
+STATIC_URL = '/polls/static/'
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_PATH, 'static'),

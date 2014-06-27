@@ -31,10 +31,16 @@ urlpatterns = patterns('',
     url(r'friendsearch/$', views.friendsearch),
     url(r'friendsubmit/$', views.friendsubmit),
 
+
+
     #url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<pk>\d+)/results/$', views.ResultsView.as_view(), name='results'),
     url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
-   
 
+)
+
+
+urlpatterns += patterns(”,
+(r’^static/(?P.*)$’, ‘django.views.static.serve’, {‘document_root’: settings.STATIC_ROOT}),
 )

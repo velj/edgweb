@@ -18,12 +18,24 @@ urlpatterns = patterns('',
     url(r'logout/$', views.logout_page),
     url(r'register/$', views.register_page),
     url(r'^user/(\w+)/$', views.user_page),    
+    url(r'newround/$', views.new_round),
+    url(r'addplayers/$', views.addplayers),
+    url(r'gamestart/$', views.gamestart),
+    url(r'game/$', views.game),
+    url(r'finalscorecard/$', views.finalscorecard),
+    url(r'stats/$', views.stats),
+    url(r'statsview/$', views.statsview),
+    url(r'settings/$', views.settings),
+    url(r'addfriend/$', views.addfriend),
+    url(r'removefriend/$', views.removefriend),
+    url(r'friendsearch/$', views.friendsearch),
+    url(r'friendsubmit/$', views.friendsubmit),
+
 
     #url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^(?P<pk>\d+)/results/$', views.ResultsView.as_view(), name='results'),
     url(r'^(?P<poll_id>\d+)/vote/$', views.vote, name='vote'),
    
-    #not using template view
-    #url(r'^(?P<round_id>\d+)/scorecard/$', views.Scorecard, name='scorecard'),
+
 )
