@@ -184,7 +184,7 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, '/polls/static'),
+    os.path.join(PROJECT_PATH, 'static'),
 )
 
 # try to load local_settings.py if it exists
